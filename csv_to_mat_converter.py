@@ -47,5 +47,5 @@ def process_directory(directory):
                 df_merged.to_csv(file_name+'.csv', index=False, header=False)
 
 # we call the function to start the recursion process
-process_directory('.')
+process_directory('../dataset')
 
