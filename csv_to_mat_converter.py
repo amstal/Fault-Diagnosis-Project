@@ -21,11 +21,15 @@ def process_directory(directory):
         else:
             # for the files we will look for .mat files
             file_name, file_extension = os.path.splitext(full_path)
-
+            
             if file_extension == '.mat':
+
                 # Load the .mat file
                 data = scipy.io.loadmat(full_path)
-                
+
+                if 'trajCmds' not in data or 'trajResps' not in data:
+                    continue
+
                 # get data for both commands and responses with panda
                 var_traj_comm = data['trajCmds']
                 var_traj_responses = data['trajResps']
