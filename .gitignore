@@ -1,0 +1,8 @@
+# Ignore all data files
+dataset
+
+# Ignore all python cache
+__pycache__
+
+# Ignore DS_Store file from Mac
+.DS_Store
