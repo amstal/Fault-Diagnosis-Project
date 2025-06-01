@@ -4,3 +4,5 @@ Our project aims to build and train a classifier model for the detection and dia
 The training is initially done on data simulated by a digital twin before operating a transfer learning to adapt our model to a real robot.
 
 This project will be written in Python using Pytorch.
+
+The project is devided in 3 main scripts which are detailed in the folders LSTM, DANN and GTN with their own requirements and README files.
