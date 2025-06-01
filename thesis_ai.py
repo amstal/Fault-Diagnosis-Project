@@ -142,13 +142,13 @@ num_classes = len(categories)
 print(num_classes)
 
 # Initialize model and move to GPU
-# model = LSTMModel(input_size = input_size, hidden_size = 100, num_classes = num_classes).to(device)
+model = LSTMModel(input_size = input_size, hidden_size = 100, num_classes = num_classes).to(device)
 # model = CNNModel(input_size = input_size, num_classes=num_classes).to(device)
 # model = ComplexCNN(input_size = input_size, num_classes=num_classes, num_channels=128).to(device)
 # model = TransformerModel(input_size = input_size, hidden_size=32, num_classes=num_classes).to(device)
 # model = TCN(input_size = input_size, output_size=num_classes, num_channels=[128,128,128]).to(device)
 # model = MyTCN(input_size = input_size, num_classes=num_classes, num_channels=64).to(device)
-model = CNNModelDANN(input_size = input_size, num_classes=num_classes).to(device)
+#model = CNNModelDANN(input_size = input_size, num_classes=num_classes).to(device)
 # model = AlexNetDANN(input_size = input_size, num_classes=num_classes).to(device)
 
 # Lists to store loss and accuracy values
@@ -233,7 +233,7 @@ for epoch in range(num_epochs+1):
         target_domain_label = torch.ones(len(inputs_real)).long().to(device)
 
         # Forward propagation
-        outputs, source_domain_outputs = model(inputs, alpha) 
+        source_domain_outputs = model(inputs) 
 
         # classify loss source domain
         _, predicted_train = torch.max(outputs.data, 1)
@@ -244,7 +244,7 @@ for epoch in range(num_epochs+1):
         loss_source_domain = criterion(source_domain_outputs, source_domain_label)
 
         # forward pass for target domain
-        _, target_domain_outputs = model(inputs_real, alpha)
+        _, target_domain_outputs = model(inputs_real)
         loss_target_domain = criterion(target_domain_outputs, target_domain_label)
 
         with torch.no_grad():

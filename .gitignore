@@ -1,5 +1,6 @@
 # Ignore all data files
 dataset
+mixed_datasets
 
 # Ignore all python cache
 __pycache__
